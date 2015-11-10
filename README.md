@@ -27,6 +27,7 @@ $ node index.js [Options] <Full path to the Source JSON Array File> <Full path t
 Outputs can be found under `output` directory
 
 ### Options
+
 ```sh
 -h, --help         output usage information
 -V, --version      output the version number
