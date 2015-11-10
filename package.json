@@ -1,0 +1,25 @@
+{
+  "name": "json-dicer",
+  "version": "1.0.0",
+  "description": "A Simple Node.js Application to turn a big JSON array to lots of smaller ones.",
+  "main": "index.js",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "hunspell-spellchecker": "^1.0.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "d201-c317",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/d201-c317/json-dicer.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/d201-c317/json-dicer/issues"
+  },
+  "homepage": "https://gitlab.com/d201-c317/json-dicer#README"
+}
