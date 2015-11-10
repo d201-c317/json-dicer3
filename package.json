@@ -16,10 +16,10 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/d201-c317/json-dicer.git"
+    "url": "git+https://gitlab.com/d201-c317/json-dicer3.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/d201-c317/json-dicer/issues"
+    "url": "https://gitlab.com/d201-c317/json-dicer3/issues"
   },
-  "homepage": "https://gitlab.com/d201-c317/json-dicer#README"
+  "homepage": "https://gitlab.com/d201-c317/json-dicer3#README"
 }
