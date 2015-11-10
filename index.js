@@ -25,17 +25,21 @@ var spellchecker_US = new SpellChecker();
 var spellchecker_UK = new SpellChecker();
 function InitDic(callback) {
 
-  var DICT_US = spellchecker_US.parse({
-    aff: fs.readFileSync(dictionaryPathValue + "/en_US.aff"),
-    dic: fs.readFileSync(dictionaryPathValue + "/en_US.dic")
-  });
+  if (program.spell) {
+    var DICT_US = spellchecker_US.parse({
+      aff: fs.readFileSync(dictionaryPathValue + "/en_US.aff"),
+      dic: fs.readFileSync(dictionaryPathValue + "/en_US.dic")
+    });
 
-  var DICT_UK = spellchecker_UK.parse({
-    aff: fs.readFileSync(dictionaryPathValue + "/en_GB.aff"),
-    dic: fs.readFileSync(dictionaryPathValue + "/en_GB.dic")
-  });
+    var DICT_UK = spellchecker_UK.parse({
+      aff: fs.readFileSync(dictionaryPathValue + "/en_GB.aff"),
+      dic: fs.readFileSync(dictionaryPathValue + "/en_GB.dic")
+    });
 
-  callback && callback(DICT_US, DICT_UK);
+    callback && callback(DICT_US, DICT_UK);
+  } else {
+    callback && callback(null, null);
+  }
 }
 // End Dictionary Buffer
 
