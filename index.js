@@ -12,10 +12,11 @@ program
   .option('-m, --metadata', 'Generate Metadata', false)
   .option('-f, --filter', 'Filter non-english words', false)
   .option('-s, --spell', 'Enable Spell Checker', false)
-  .arguments('<cmd> <dictionaryPath>')
-  .action(function (cmd, dictionaryPath) {
+  .arguments('<cmd> <outputDir> [dictionaryPath]')
+  .action(function (cmd, outputDir, dictionaryPath) {
     cmdValue = cmd;
     dictionaryPathValue = dictionaryPath;
+    outputValue = outputDir;
   });
 
 
@@ -49,7 +50,7 @@ function readfile(callback) {
     if (err) {
       callback && callback(err);
     } else {
-      var dir = './output';
+      var dir = './' + outputValue;
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
       }
@@ -74,7 +75,7 @@ function parseFile(entry, DICT_US, DICT_UK, callback) {
 
     if (program.filter && !program.spell) {
       var purified = _.filter(data, function (d) {
-        return d.lemma.match(/^[a-zA-Z]+$/);
+        return d.lemma.match(/^[A-Z]+$/i);
       });
       callback && callback(purified);
     }
@@ -83,7 +84,7 @@ function parseFile(entry, DICT_US, DICT_UK, callback) {
       spellchecker_US.use(DICT_US);
       spellchecker_UK.use(DICT_UK);
       var checked = _.filter(data, function (d) {
-        return d.lemma.match(/^[a-zA-Z]+$/) && d.lemma.length > 1 && spellchecker_US.check(d.lemma) || spellchecker_UK.check(d.lemma);
+        return d.lemma.match(/^[A-Z]+$/i) && d.lemma.length > 1 && (spellchecker_US.check(d.lemma) || spellchecker_UK.check(d.lemma));
       });
       callback && callback(checked);
     }
@@ -115,16 +116,16 @@ function writeFile(entry, callback) {
         out = jsonSrc.slice(first + 1, last);
       }
       if (program.pretty == true) {
-        fs.writeFile('./output/' + cnt + '.json', JSON.stringify(out, null, 2), 'utf8', null);
+        fs.writeFile('./' + outputValue + '/' + cnt + '.json', JSON.stringify(out, null, 2), 'utf8', null);
       } else {
-        fs.writeFile('./output/' + cnt + '.json', JSON.stringify(out), 'utf8', null);
+        fs.writeFile('./' + outputValue + '/' + cnt + '.json', JSON.stringify(out), 'utf8', null);
       }
     }
     out = jsonSrc.slice(first, jsonSrc.length);
     if (program.pretty == true) {
-      fs.writeFile('./output/' + cnt + '.json', JSON.stringify(out, null, 2), 'utf8', null);
+      fs.writeFile('./' + outputValue + '/' + cnt + '.json', JSON.stringify(out, null, 2), 'utf8', null);
     } else {
-      fs.writeFile('./output/' + cnt + '.json', JSON.stringify(out), 'utf8', null);
+      fs.writeFile('./' + outputValue + '/' + cnt + '.json', JSON.stringify(out), 'utf8', null);
     }
   }
   callback && callback(cnt);
@@ -144,7 +145,7 @@ InitDic(function (DICT_US, DICT_UK) {
           var metadata = {
             pages: callback
           };
-          fs.writeFile('./output/metadata.json', JSON.stringify(metadata, null, 2), 'utf8', null);
+          fs.writeFile('./' + outputValue + '/metadata.json', JSON.stringify(metadata, null, 2), 'utf8', null);
         }
       });
     });

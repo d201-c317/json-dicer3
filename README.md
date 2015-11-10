@@ -21,10 +21,10 @@ Usage
 7. Finally...
 
 ```sh
-$ node index.js [Options] <Full path to the Source JSON Array File> <Full path to the directory contains en_US.aff, en_US.dic, en_GB.aff, en_GB.dic)
+$ node index.js [Options] <Full path to the Source JSON Array File> <Output Directory> <Full path to the directory contains en_US.aff, en_US.dic, en_GB.aff, en_GB.dic)
 ```
 
-Outputs can be found under `output` directory
+Outputs can be found under the output directory you defined
 
 ### Options
 
@@ -39,4 +39,5 @@ Outputs can be found under `output` directory
 ```
 
 ### License
+
 GPLv3
