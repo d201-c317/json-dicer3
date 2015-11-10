@@ -24,7 +24,8 @@ Usage
 $ node index.js [Options] <Full path to the Source JSON Array File> <Full path to the directory contains en_US.aff, en_US.dic, en_GB.aff, en_GB.dic)
 ```
 
-8. Outputs can be found under `output` directory
+Outputs can be found under `output` directory
+
 ### Options
 ```sh
 -h, --help         output usage information
