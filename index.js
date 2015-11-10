@@ -76,7 +76,6 @@ function parseFile(entry, DICT_US, DICT_UK, callback) {
       var purified = _.filter(data, function (d) {
         return d.lemma.match(/^[a-zA-Z]+$/);
       });
-      console.log('filter');
       callback && callback(purified);
     }
 
@@ -86,7 +85,6 @@ function parseFile(entry, DICT_US, DICT_UK, callback) {
       var checked = _.filter(data, function (d) {
         return d.lemma.match(/^[a-zA-Z]+$/) && d.lemma.length > 1 && spellchecker_US.check(d.lemma) || spellchecker_UK.check(d.lemma);
       });
-      console.log('spellcheck');
       callback && callback(checked);
     }
 
