@@ -81,7 +81,7 @@ function parseFile(entry, DICT_US, DICT_UK, callback) {
       var purified = _.filter(data, function (d) {
         return d.lemma.match(/^[A-Z]+$/i);
       });
-      callback && callback(purified);
+      callback && callback(_.sortBy(purified, 'time').reverse());
     }
 
     if (program.spell && !program.filter) {
@@ -90,11 +90,11 @@ function parseFile(entry, DICT_US, DICT_UK, callback) {
       var checked = _.filter(data, function (d) {
         return d.lemma.match(/^[A-Z]+$/i) && d.lemma.length > 1 && (spellchecker_US.check(d.lemma) || spellchecker_UK.check(d.lemma));
       });
-      callback && callback(checked);
+      callback && callback(_.sortBy(checked, 'time').reverse());
     }
 
     if (!(program.filter || program.spell)) {
-      callback && callback(data);
+      callback && callback(_.sortBy(data, 'time').reverse());
     }
   }
 }
