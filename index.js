@@ -149,7 +149,7 @@ InitDic(function (DICT_US, DICT_UK) {
           var metadata = {
             pages: callback
           };
-          fs.writeFile('./' + outputValue + '/metadata.json', JSON.stringify(metadata, null, 2), 'utf8', null);
+          fs.writeFile('./metadata.json', JSON.stringify(metadata, null, 2), 'utf8', null);
         }
       });
     });
