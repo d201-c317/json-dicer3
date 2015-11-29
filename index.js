@@ -117,7 +117,7 @@ function writeFile(entry, callback) {
       if (first == 0) {
         out = jsonSrc.slice(first, last);
       } else {
-        out = jsonSrc.slice(first + 1, last);
+        out = jsonSrc.slice(first, last);
       }
       if (program.pretty == true) {
         fs.writeFile('./' + outputValue + '/' + cnt + '.json', JSON.stringify(out, null, 2), 'utf8', null);
