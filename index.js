@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 var program = require('commander');
-var fs = require('fs');
+var fs = require('graceful-fs');
 var _ = require('underscore');
 var SpellChecker = require('hunspell-spellchecker');
 var start = new Date();
